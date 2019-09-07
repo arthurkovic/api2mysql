@@ -1,0 +1,24 @@
+version: '3'
+services:
+  mysql:
+    build:
+      context: .
+      dockerfile: config/mysql/Dockerfile
+    ports:
+      - "3306:3306"
+    command: --init-file /init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: start
+      MYSQL_DATABASE: sample
+  etl-host:
+    build: 
+      context: .
+      dockerfile: config/etl-host/Dockerfile
+    environment:
+      CLIENT_ID: %INSERT_DATA_HERE%
+      CLIENT_SECRET: %INSERT_DATA_HERE%
+      API_USERNAME: %INSERT_DATA_HERE%
+      API_PASSWORD: %INSERT_DATA_HERE%
+      API_AUTH_URL: %INSERT_DATA_HERE%
+      API_ENDPOINT: %INSERT_DATA_HERE%
+      
