@@ -10,6 +10,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: start
       MYSQL_DATABASE: sample
+    container_name: mysql-api
   etl-host:
     build: 
       context: .
@@ -21,4 +22,5 @@ services:
       API_PASSWORD: %INSERT_DATA_HERE%
       API_AUTH_URL: %INSERT_DATA_HERE%
       API_ENDPOINT: %INSERT_DATA_HERE%
+    container_name: etl-api
       

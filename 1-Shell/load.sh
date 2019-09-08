@@ -15,9 +15,11 @@ echo "Fetch data from api..."
 curl -H "Authorization: Bearer ${ACCESS_TOKEN}" ${API_ENDPOINT} -o data.json
 
 echo "Importing JSON into stage-table..."
+# truncate before stage
+echo 'truncate table sample.stage_data;' | mysqlsh root:start@mysql --sql
 # import the data
-mysqlsh root:start@mysql/sample --import data.json stage_data
+echo 'util.importJson("data.json", {schema: "sample", table: "stage_data"})' | mysqlsh root:start@mysql
 
 echo "Transfering relevant attributes into the warehouse..."
 # transfer some attribute of it to the "dwh"
-mysqlsh root:start@mysql/sample -f loader.sql sample
+mysqlsh root:start@mysql/sample -f /config/etl-host/loader.sql sample
