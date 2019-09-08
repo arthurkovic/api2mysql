@@ -12,7 +12,7 @@ Switch into the main folder and edit the following environment variables in the 
     CLIENT_SECRET: %CLIENT_SECRET_FOR_TOKEN_REQUEST%
     API_USERNAME: %USERNAME_FOR_TOKEN_REQUEST%
     API_PASSWORD: %PASSWORD_FOR_TOKEN_REQUEST%
-    API_AUTH_URL: %OATH2_URL%
+    API_AUTH_URL: %OAUTH2_URL%
     API_ENDPOINT: %API_ENDPOINT_TO_FETCH_DATA%
 
 Now you can start the docker-container via:
